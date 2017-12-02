@@ -17,8 +17,8 @@
 <script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
 <!--<![endif]-->
 <!--[if lte IE 8 ]>
-<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
-<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/modernizr.js"></script>
 <script src="lib/amazeui/amazeui.ie8polyfill.min.js"></script>
 <![endif]-->
 <script type="text/javascript" src="lib/handlebars/handlebars.min.js"></script>
@@ -26,6 +26,7 @@
 <script type="text/javascript" src="lib/amazeui/amazeui.min.js"></script>
 <script type="text/javascript" src="lib/raty/jquery.raty.js"></script>
 <script type="text/javascript" src="js/main.min.js?t=1"></script>
+<script type="text/javascript" src="js/page/news.js"></script>
 </head>
 <body>
     <header class="header">
@@ -40,11 +41,11 @@
 
         <nav>
             <ul class="header-nav am-collapse">
-                <li class="on"><a href="index.html">首页</a></li>
+                <li><a href="index.html">首页</a></li>
                 <li><a href="about.html">关于我们</a></li>
                 <li><a href="product_list.html">产品中心</a></li>
-                <li><a href="new_list.html">新闻动态</a></li>
-                <li><a href="case_list.html">产品应用</a></li>
+                <li class="on"><a href="new_list.html">新闻动态</a></li>
+                <li><a href="case_list.html">设备展示</a></li>
                 <li><a href="contact.html">联系我们</a></li>
             </ul>
             <div class="header-serch  am-hide-md-down">
@@ -65,16 +66,16 @@
                 <div class="com-nav-left">
                     <h1><em>新闻中心</em><i>NEWS</i></h1>
                     <ul>
-                        <li class="on"><a href="#">公司新闻</a></li>
-                        <li><a href="#">产品资讯</a></li>
-                        <li><a href="#">营销动态</a></li>
+                        <li id="news_tab1" class="on" onclick="news_change(1);"><a>公司新闻</a></li>
+                        <li id="news_tab2" onclick="news_change(2);"><a>产品资讯</a></li>
+                        <li id="news_tab3" onclick="news_change(3);"><a>营销动态</a></li>
                     </ul>
                 </div>
             </div>
             <div class="am-u-sm-12 am-u-md-9 am-u-lg-9">
                 <div class="com-nav-title">
                     <a href="#doc-oc-demo1" class="font am-show-sm-only" data-am-offcanvas>&#xe68b;</a>
-                    <span>公司新闻</span>
+                    <span id="news-type">公司新闻</span>
                 </div>
                 
                 <div class="new-list">

@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-    <title>制造工业</title>
+    <title>公司简介</title>
     ﻿<meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="format-detection" content="telephone=no">
@@ -17,8 +17,8 @@
 <script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
 <!--<![endif]-->
 <!--[if lte IE 8 ]>
-<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
-<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/modernizr.js"></script>
 <script src="lib/amazeui/amazeui.ie8polyfill.min.js"></script>
 <![endif]-->
 <script type="text/javascript" src="lib/handlebars/handlebars.min.js"></script>
@@ -26,6 +26,7 @@
 <script type="text/javascript" src="lib/amazeui/amazeui.min.js"></script>
 <script type="text/javascript" src="lib/raty/jquery.raty.js"></script>
 <script type="text/javascript" src="js/main.min.js?t=1"></script>
+<script type="text/javascript" src="js/page/about.js"></script>
 </head>
 <body>
     <header class="header">
@@ -40,11 +41,11 @@
 
         <nav>
             <ul class="header-nav am-collapse">
-                <li class="on"><a href="index.html">首页</a></li>
-                <li><a href="about.html">关于我们</a></li>
+                <li><a href="index.html">首页</a></li>
+                <li class="on"><a href="about.html">关于我们</a></li>
                 <li><a href="product_list.html">产品中心</a></li>
                 <li><a href="new_list.html">新闻动态</a></li>
-                <li><a href="case_list.html">产品应用</a></li>
+                <li><a href="case_list.html">设备展示</a></li>
                 <li><a href="contact.html">联系我们</a></li>
             </ul>
             <div class="header-serch  am-hide-md-down">
@@ -66,20 +67,34 @@
                  <div class="com-nav-left">
                      <h1><em>关于我们</em><i>ABOUT US</i></h1>
                         <ul >
-                            <li class="on"><a href="#">公司简介</a></li>
-                            <li><a href="#">企业文化</a></li>
-                            <li><a href="#">经营理念</a></li>
-                            <li><a href="#">发展历程</a></li>
-                            <li><a href="#">资质荣誉</a></li>
-                            <li><a href="#">厂房设置</a></li>
-                            <li><a href="#">社会责任</a></li>
+                            <li id="about_tab1" name="about_tab" class="on" onclick="about_change(1);"><a>公司简介</a></li>
+                            <li id="about_tab2" name="about_tab" onclick="about_change(2);"><a>企业文化</a></li>
+                            <li id="about_tab3" name="about_tab" onclick="about_change(3);"><a>经营理念</a></li>
                         </ul>
                      </div>
              </div>
-            <div class="am-u-sm-12 am-u-md-9 am-u-lg-9">
+            <div class="am-u-sm-12 am-u-md-9 am-u-lg-9" id="about_info1">
                 <div class="com-nav-title">
                     <a href="#doc-oc-demo1" class="font am-show-sm-only" data-am-offcanvas>&#xe68b;</a>
                     <span>公司简介</span>
+                </div>
+                <div class="com-nav-content">
+                    <span>大冶市云阿拉丁科技有限公司创建于2015年1月5日，总部位于青铜故里——大冶市。公司致力于帮助传统行业实现在互联网时代</span>
+                </div>
+            </div>
+            <div class="am-u-sm-12 am-u-md-9 am-u-lg-9" id="about_info2" style="display: none">
+                <div class="com-nav-title">
+                    <a href="#doc-oc-demo1" class="font am-show-sm-only" data-am-offcanvas>&#xe68b;</a>
+                    <span>企业文化</span>
+                </div>
+                <div class="com-nav-content">
+                    <span>大冶市云阿拉丁科技有限公司创建于2015年1月5日，总部位于青铜故里——大冶市。公司致力于帮助传统行业实现在互联网时代</span>
+                </div>
+            </div>
+            <div class="am-u-sm-12 am-u-md-9 am-u-lg-9" id="about_info3" style="display: none">
+                <div class="com-nav-title">
+                    <a href="#doc-oc-demo1" class="font am-show-sm-only" data-am-offcanvas>&#xe68b;</a>
+                    <span>经营理念</span>
                 </div>
                 <div class="com-nav-content">
                     <span>大冶市云阿拉丁科技有限公司创建于2015年1月5日，总部位于青铜故里——大冶市。公司致力于帮助传统行业实现在互联网时代</span>
