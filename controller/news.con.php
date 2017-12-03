@@ -11,12 +11,16 @@
 require 'connection.db.php';
 require 'Constant.php';
 
-
+$numPerPage = 4;
 $funName = filter_input(INPUT_GET, 'funName');
+$type = filter_input(INPUT_GET, 'type');
 
 switch ($funName) {
     case 'getNews':
-        getNews(((int)$_GET['cp'] - 1) * 4, 4);
+        getNews(((int)$_GET['cp'] - 1) * $numPerPage, $numPerPage, $type);
+        break;
+    case 'getNewDetail':
+        getNewDetail((int)$_GET['id']);
         break;
     case 'addServiceApply':
         addServiceApply();
@@ -46,30 +50,33 @@ function PDOConnect()
     return $con;
 }
 
-function getNews($s, $n)
+function getNews($s, $n, $type)
 {
     $con = connect();
 
     $result = array();
     $sql = "SELECT 
                   `id`, 
+                  `type`,
                   `title`, 
                   `content`, 
-                  `image_path`
-            FROM `tb_news` 
-            ORDER BY `publish_time` DESC 
+                  `created_at`
+            FROM `jld_news`
+            WHERE `type` = ?
+            ORDER BY `created_at` DESC 
             LIMIT ?, ?";
 
     $stmt = $con->prepare($sql);
-    $stmt->bind_param("ii", $s, $n);
+    $stmt->bind_param("iii",$type,$s, $n);
     $stmt->execute();
 
     $stmt->store_result();
     $stmt->bind_result(
         $id,
+        $type,
         $title,
         $content,
-        $image_path
+        $created_at
     );
 
     $result['news'] = array();
@@ -77,16 +84,18 @@ function getNews($s, $n)
     while ($stmt->fetch()) {
         $item = array();
         $item['id'] = $id;
+        $item['type'] = $type;
         $item['title'] = $title;
         $item['content'] = $content;
-        $item['image'] = $image_path;
+        $item['created_at'] = $created_at;
 
         $result['news'][$id] = $item;
     }
 
     //获取数量
-    $sqlCount = "SELECT * FROM `tb_news`";
+    $sqlCount = "SELECT * FROM `jld_news`  WHERE `type` = ?";
     $stmt = $con->prepare($sqlCount);
+    $stmt->bind_param("i",$type);
     $stmt->execute();
     $stmt->store_result();
     $result['newsNum'] = $stmt->num_rows;
@@ -94,6 +103,20 @@ function getNews($s, $n)
     //关闭数据库连接
     $stmt->close();
     $con->close();
+    echo json_encode($result);
+}
+
+function getNewDetail($id) {
+    $con = PDOConnect();
+    $sql = "SELECT * FROM `jld_news` WHERE `id` = ?";
+    $stmt = $con->prepare($sql);
+
+    $stmt->bindParam(1, $id, PDO::PARAM_INT);
+    $stmt->execute();
+
+    $result = array();
+    $result['detail'] = $stmt->fetchObject();
+
     echo json_encode($result);
 }
 
