@@ -51,10 +51,13 @@ function getIndex() {
                 }
             }
             //设置首页设备图
+            var src = "/images/devices/default.png";
             for (var item in result.devices) {
                 var i = 0;
                 var html = "";
-                var src = "images/devices/"+result.devices[item]['image'];
+                if (result.devices[item + ""]["image"] != null) {
+                    src = "/images/devices/" + result.devices[item + ""]["image"];
+                }
                 html = "<img src='"+src+"' /><br>"
                 $("#device-index").append(html);
             }

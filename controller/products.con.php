@@ -212,5 +212,75 @@ function getDevices($s, $n, $type)
 /**
  * @param $id
  */
+function getProductDetail($id) {
+    $con = connect();
 
+    $sql = "SELECT 
+                  `id`, 
+                  `type`,
+                  `title`, 
+                  `image`, 
+                  `model`, 
+                  `material`, 
+                  `temperature`, 
+                  `description`, 
+                  `created_at`
+            FROM `jld_products`
+            WHERE `id` = ?";
+
+    $stmt = $con->prepare($sql);
+    $stmt->bind_param("i",$id);
+    $stmt->execute();
+
+    $stmt->store_result();
+    $stmt->bind_result(
+        $id,
+        $type,
+        $title,
+        $image,
+        $model,
+        $material,
+        $temperature,
+        $description,
+        $created_at
+    );
+
+    $result['detail'] = array();
+
+    while ($stmt->fetch()) {
+        $item = array();
+        $item['id'] = $id;
+        $item['type'] = $type;
+        $item['title'] = $title;
+        $item['image'] = $image;
+        $item['model'] = $model;
+        $item['material'] = $material;
+        $item['temperature'] = $temperature;
+        $item['description'] = $description;
+        $item['created_at'] = $created_at;
+
+        $result['detail'] = $item;
+    }
+
+    //获取type类型
+    $sqltype = "SELECT * FROM `jld_product_type`";
+    $stmt1 = $con->prepare($sqltype);
+    $stmt1->execute();
+    $stmt1->store_result();
+    $stmt1->bind_result(
+        $id,
+        $name,
+        $describe
+    );
+    $result['type'] = array();
+    while ($stmt1->fetch()) {
+        $item = array();
+        $item['id'] = $id;
+        $item['name'] = $name;
+
+        $result['type'][$id] = $item;
+    }
+
+    echo json_encode($result);
+}
 
