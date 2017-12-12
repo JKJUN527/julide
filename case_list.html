@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-    <title>制造工业</title>
+    <title>聚力德官网-设备展示</title>
     ﻿<meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="format-detection" content="telephone=no">
@@ -26,6 +26,8 @@
 <script type="text/javascript" src="lib/amazeui/amazeui.min.js"></script>
 <script type="text/javascript" src="lib/raty/jquery.raty.js"></script>
 <script type="text/javascript" src="js/main.min.js?t=1"></script>
+<script type="text/javascript" src="js/page/device.js"></script>
+
 </head>
 <body>
     <header class="header">
@@ -63,105 +65,25 @@
         <div class="cms-g">
             <div class="am-hide-sm-only am-u-md-3 am-u-lg-3">
                 <div class="com-nav-left">
-                    <h1><em>产品应用</em><i>APPLICATION</i></h1>
-                    <ul>
-                        <li class="on"><a href="#">照明应用</a></li>
-                        <li><a href="#">场景体验</a></li>
-                        <li><a href="#">照明案例</a></li>
+                    <h1><em>设备分类</em><i>APPLICATION</i></h1>
+                    <ul id="device-type">
                     </ul>
                 </div>
             </div>
             <div class="am-u-sm-12 am-u-md-9 am-u-lg-9">
                 <div class="com-nav-title">
                     <a href="#doc-oc-demo1" class="font am-show-sm-only" data-am-offcanvas>&#xe68b;</a>
-                    <span>照明案例</span>
+                    <span>设备展示</span>
                 </div>
-                <div class="case-list">
-                    <div class="am-u-sm-6 am-u-md-4 am-u-lg-3">
-                        <div class="case-list-item">
-                            <a href="./case_info.html"><img src="images/cast_list_01.jpg" /><span>商务型自选模版</span></a>
-                        </div>
-                    </div>
-                    <div class="am-u-sm-6 am-u-md-4 am-u-lg-3">
-                        <div class="case-list-item">
-                            <a href="./case_info.html"><img src="images/cast_list_01.jpg" /><span>商务型自选模版</span></a>
-                        </div>
-                    </div>
-                    <div class="am-u-sm-6 am-u-md-4 am-u-lg-3">
-                        <div class="case-list-item">
-                            <a href="./case_info.html"><img src="images/cast_list_01.jpg" /><span>商务型自选模版</span></a>
-                        </div>
-                    </div>
-                    <div class="am-u-sm-6 am-u-md-4 am-u-lg-3">
-                        <div class="case-list-item">
-                            <a href="./case_info.html"><img src="images/cast_list_01.jpg" /><span>商务型自选模版</span></a>
-                        </div>
-                    </div>
-                    <div class="am-u-sm-6 am-u-md-4 am-u-lg-3">
-                        <div class="case-list-item">
-                            <a href="./case_info.html"><img src="images/cast_list_01.jpg" /><span>商务型自选模版</span></a>
-                        </div>
-                    </div>
-                    <div class="am-u-sm-6 am-u-md-4 am-u-lg-3">
-                        <div class="case-list-item">
-                            <a href="./case_info.html"><img src="images/cast_list_01.jpg" /><span>商务型自选模版</span></a>
-                        </div>
-                    </div>
-                    <div class="am-u-sm-6 am-u-md-4 am-u-lg-3">
-                        <div class="case-list-item">
-                            <a href="./case_info.html"><img src="images/cast_list_01.jpg" /><span>商务型自选模版</span></a>
-                        </div>
-                    </div>
-                    <div class="am-u-sm-6 am-u-md-4 am-u-lg-3">
-                        <div class="case-list-item">
-                            <a href="./case_info.html"><img src="images/cast_list_01.jpg" /><span>商务型自选模版</span></a>
-                        </div>
-                    </div>
-                    <div class="am-u-sm-6 am-u-md-4 am-u-lg-3">
-                        <div class="case-list-item">
-                            <a href="./case_info.html"><img src="images/cast_list_01.jpg" /><span>商务型自选模版</span></a>
-                        </div>
-                    </div>
-                    <div class="am-u-sm-6 am-u-md-4 am-u-lg-3">
-                        <div class="case-list-item">
-                            <a href="./case_info.html"><img src="images/cast_list_01.jpg" /><span>商务型自选模版</span></a>
-                        </div>
-                    </div>
-                    <div class="am-u-sm-6 am-u-md-4 am-u-lg-3">
-                        <div class="case-list-item">
-                            <a href="./case_info.html"><img src="images/cast_list_01.jpg" /><span>商务型自选模版</span></a>
-                        </div>
-                    </div>
-                    <div class="am-u-sm-6 am-u-md-4 am-u-lg-3">
-                        <div class="case-list-item">
-                            <a href="./case_info.html"><img src="images/cast_list_01.jpg" /><span>商务型自选模版</span></a>
-                        </div>
-                    </div>
-
+                <div class="case-list" id="case-list">
+                    <!--<div class="am-u-sm-6 am-u-md-4 am-u-lg-3">-->
+                        <!--<div class="case-list-item">-->
+                            <!--<a href="./case_info.html"><img src="images/cast_list_01.jpg" /><span>商务型自选模版</span></a>-->
+                        <!--</div>-->
+                    <!--</div>-->
                 </div>
-                <div class="page-list">
-                    <a href="#"><<</a>
-                    <a href="#"><</a>
-                    <a href="#" class="num">1</a>
-                    <a href="#" class="num">2</a>
-                    <a href="#" class="num">3</a>
-                    <a href="#" class="on">4</a>
-                    <a href="#" class="num">5</a>
-                    <a href="#" class="num">6</a>
-                    <a href="#">></a>
-                    <a href="#">>></a>
+                <div class="page-list" id="page-list">
                 </div>
-            </div>
-        </div>
-    </div>
-    <div id="doc-oc-demo1" class="am-offcanvas">
-        <div class="am-offcanvas-bar">
-            <div class="am-offcanvas-content com-nav-left com-nav-left1">
-                <ul>
-                    <li class="on"><a href="#">照明应用</a></li>
-                    <li><a href="#">场景体验</a></li>
-                    <li><a href="#">照明案例</a></li>
-                </ul>
             </div>
         </div>
     </div>
