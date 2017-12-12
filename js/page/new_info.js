@@ -4,9 +4,21 @@ if (id === null || id.toString().length < 1) {
 }
 
 $(document).ready(function () {
+    getNewsdetail(id);
+});
+
+function preNewinfo() {
+    newid = getQueryString("id");
+    if (newid === null || newid.toString().length < 1) {
+        newid = 1;
+    }
+    newid = newid-1;
+    getNewsdetail(newid);
+}
+function getNewsdetail(newid) {
     $.ajax({
         url: "controller/news.con.php",
-        data: {funName:"getNewDetail", id:id},
+        data: {funName:"getNewDetail", id:newid},
         type:"get",
         success: function (data) {
             var result = JSON.parse(data);
@@ -16,8 +28,7 @@ $(document).ready(function () {
             $(".com-nav-content span").html(content);
         }
     })
-});
-
+}
 
 function getQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
