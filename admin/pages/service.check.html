@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>审核企业服务 | Dashboard</title>
+    <!-- Favicon-->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <!--<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"-->
+    <!--type="text/css">-->
+    <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">-->
+
+    <!-- Bootstrap Core Css -->
+    <link href="../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="../plugins/node-waves/waves.min.css" rel="stylesheet"/>
+
+    <!-- Sweetalert Css -->
+    <link href="../plugins/sweetalert/sweetalert.css" rel="stylesheet"/>
+
+    <!-- Animation Css -->
+    <link href="../plugins/animate-css/animate.min.css" rel="stylesheet"/>
+
+    <!-- Preloader Css -->
+    <link href="../plugins/material-design-preloader/md-preloader.min.css" rel="stylesheet"/>
+
+    <!-- Morris Chart Css-->
+    <link href="../plugins/morrisjs/morris.css" rel="stylesheet"/>
+
+    <!-- Custom Css -->
+    <link href="../css/style.css" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="../css/themes/all-themes.min.css" rel="stylesheet"/>
+</head>
+
+<body class="theme-teal">
+
+<!-- Top Bar -->
+<nav class="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="javascript:void(0);" class="bars"></a>
+            <a class="navbar-brand" href="javascript:void(0);">企业服务</a>
+        </div>
+    </div>
+</nav>
+<!-- #END# Top Bar -->
+
+<!-- Side Bar-->
+<section>
+    <!-- Left Sidebar -->
+    <aside id="leftsidebar" class="sidebar">
+        <!-- Menu -->
+        <div class="menu">
+            <ul class="list">
+                <li>
+                    <a href="admin.html">
+                        <i class="material-icons">verified_user</i>
+                        <span>管理员</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="staff.html">
+                        <i class="material-icons">people</i>
+                        <span>合伙人</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">art_track</i>
+                        <span>资讯</span>
+                    </a>
+
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="news.html">资讯列表</a>
+                        </li>
+                        <li>
+                            <a href="news.add.html">添加资讯</a>
+                        </li>
+                    </ul>
+                </li>
+				<li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">art_track</i>
+                            <span>智享数据</span>
+                        </a>
+
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="data.html">数据列表</a>
+                            </li>
+                            <li>
+                                <a href="data.add.html">添加数据</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                <li>
+                    <a href="request.html">
+                        <i class="material-icons">assignment</i>
+                        <span>需求</span>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">business_center</i>
+                        <span>企业服务</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li class="active">
+                            <a href="service.check.html">审核</a>
+                        </li>
+                        <li>
+                            <a href="service.publish.html">发布/完善</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="header"></li>
+
+                <li>
+                    <a id="cu-logout" href="#">
+                        <i class="material-icons">input</i>
+                        <span>退出</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);">&copy; 2016-2017|four2nine - dashboard</a>
+                </li>
+            </ul>
+        </div>
+
+    </aside>
+    <!-- #END# Left Sidebar -->
+</section>
+<!-- #END# Side Bar-->
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2>BUSINESS SERVICE-CHECK</h2>
+        </div>
+
+        <!-- Widgets -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            企业服务-审核列表
+                        </h2>
+                    </div>
+                    <div class="body table-responsive">
+                        <table class="table table-striped" id="cu-service-table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>公司名称</th>
+                                <th>联系人</th>
+                                <th>电话</th>
+                                <th>邮箱</th>
+                                <th>申请状态</th>
+                                <th>申请时间</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td colspan="8"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="service-footer" class="panel-footer">
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Widgets -->
+    </div>
+</section>
+
+<!-- Modal Dialogs ====================================================================================================================== -->
+<!-- Default Size -->
+<div class="modal fade" id="detailServiceModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="defaultModalLabel">入驻申请详情/审核</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped" id="cu-service-detail-table">
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary waves-effect" onclick="passApply()">审核通过</button>
+                <button type="button" class="btn btn-danger waves-effect" onclick="denyApply()">审核拒绝</button>
+                <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Jquery Core Js -->
+<script src="../plugins/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core Js -->
+<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap Notify Plugin Js -->
+<script src="../plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+<!-- SweetAlert Plugin Js -->
+<script src="../plugins/sweetalert/sweetalert.min.js"></script>
+
+<!-- Waves Effect Plugin Js -->
+<script src="../plugins/node-waves/waves.min.js"></script>
+
+<!-- Custom Js -->
+<script src="../js/main.js"></script>
+<script src="../js/pages/service.check.js"></script>
+
+</body>
+
+</html>

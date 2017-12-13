@@ -1,0 +1,474 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>完善企业服务 | Dashboard</title>
+    <!-- Favicon-->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <!--<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"-->
+    <!--type="text/css">-->
+    <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">-->
+
+    <!-- Bootstrap Core Css -->
+    <link href="../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="../plugins/node-waves/waves.min.css" rel="stylesheet"/>
+
+    <!-- Sweetalert Css -->
+    <link href="../plugins/sweetalert/sweetalert.css" rel="stylesheet"/>
+
+    <!-- Animation Css -->
+    <link href="../plugins/animate-css/animate.min.css" rel="stylesheet"/>
+
+    <!-- Dropzone Css -->
+    <link href="../plugins/dropzone/dropzone.css" rel="stylesheet">
+
+    <!-- Preloader Css -->
+    <link href="../plugins/material-design-preloader/md-preloader.min.css" rel="stylesheet"/>
+
+    <!-- Morris Chart Css-->
+    <link href="../plugins/morrisjs/morris.css" rel="stylesheet"/>
+
+    <!-- Bootstrap Select Css -->
+    <link href="../plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet"/>
+
+    <!-- noUISlider Css -->
+    <link href="../plugins/nouislider/nouislider.min.css" rel="stylesheet"/>
+
+    <!-- Custom Css -->
+    <link href="../css/style.css" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="../css/themes/all-themes.min.css" rel="stylesheet"/>
+</head>
+
+<body class="theme-teal">
+
+<!-- Top Bar -->
+<nav class="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="javascript:void(0);" class="bars"></a>
+            <a class="navbar-brand" href="javascript:void(0);">企业服务</a>
+        </div>
+    </div>
+</nav>
+<!-- #END# Top Bar -->
+
+<!-- Side Bar-->
+<section>
+    <!-- Left Sidebar -->
+    <aside id="leftsidebar" class="sidebar">
+        <!-- Menu -->
+        <div class="menu">
+            <ul class="list">
+                <li>
+                    <a href="admin.html">
+                        <i class="material-icons">verified_user</i>
+                        <span>管理员</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="staff.html">
+                        <i class="material-icons">people</i>
+                        <span>合伙人</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">art_track</i>
+                        <span>资讯</span>
+                    </a>
+
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="news.html">资讯列表</a>
+                        </li>
+                        <li>
+                            <a href="news.add.html">添加资讯</a>
+                        </li>
+                    </ul>
+                </li>
+				<li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">art_track</i>
+                            <span>智享数据</span>
+                        </a>
+
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="data.html">数据列表</a>
+                            </li>
+                            <li>
+                                <a href="data.add.html">添加数据</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                <li>
+                    <a href="request.html">
+                        <i class="material-icons">assignment</i>
+                        <span>需求</span>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">business_center</i>
+                        <span>企业服务</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="service.check.html">审核</a>
+                        </li>
+                        <li class="active">
+                            <a href="service.publish.html">发布/完善</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="header"></li>
+
+                <li>
+                    <a id="cu-logout" href="#">
+                        <i class="material-icons">input</i>
+                        <span>退出</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);">&copy; 2016-2017|four2nine - dashboard</a>
+                </li>
+            </ul>
+        </div>
+
+    </aside>
+    <!-- #END# Left Sidebar -->
+</section>
+<!-- #END# Side Bar-->
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2>BUSINESS SERVICE-COMPLETE</h2>
+        </div>
+
+        <!-- Widgets -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                <div class="card">
+                    <div class="header clearfix">
+                        <a href="service.publish.html" role="button">
+                            <i class="waves-effect material-icons pull-left">arrow_back</i>
+                        </a>
+                        <h2 class="inline-block" style="margin-left: 30px; padding-top: 3px;">
+                            完善企业服务
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <form id="service-basic__form" method="post">
+                        <div class="body">
+                            <div class="lead">
+                                <b>基本信息(必填)</b>
+                            </div>
+
+                            <div class="input-group">
+                                <input type="hidden" name="id" required="">
+
+                                <b>公司名称</b>
+                                <div class="form-line">
+                                    <input type="text"
+                                           id="company-name"
+                                           name="company-name"
+                                           class="form-control"
+                                           placeholder="公司名称">
+                                </div>
+                                <label id="company-name-error" class="error" for="company-name"></label>
+
+                                <b>公司网站</b>
+                                <div class="form-line">
+                                    <input type="text"
+                                           id="company-website"
+                                           name="company-website"
+                                           class="form-control"
+                                           placeholder="公司网站">
+                                </div>
+                                <div class="help-info">http://, https:// etc</div>
+                                <label id="company-website-error" class="error" for="company-website"></label>
+
+                                <b>负责人姓名</b>
+                                <div class="form-line">
+                                    <input type="text"
+                                           id="contact-name"
+                                           name="contact-name"
+                                           class="form-control"
+                                           placeholder="负责人姓名">
+                                </div>
+                                <label id="contact-name-error" class="error" for="contact-name"></label>
+
+                                <b>负责人联系电话</b>
+                                <div class="form-line">
+                                    <input type="text"
+                                           id="contact-phone-number"
+                                           name="contact-phone-number"
+                                           class="form-control"
+                                           placeholder="联系电话">
+                                </div>
+                                <label id="contact-phone-number-error" class="error" for="contact-phone-number"></label>
+
+                                <b>负责人联系邮箱</b>
+                                <div class="form-line">
+                                    <input type="email"
+                                           id="contact-email"
+                                           name="contact-email"
+                                           class="form-control"
+                                           placeholder="联系邮箱">
+                                </div>
+                                <label id="contact-email-error" class="error" for="contact-email"></label>
+
+
+                                <b>负责人介绍</b>
+                                <div class="help-info">不超过200字</div>
+                                <div class="input-group">
+                                    <div class="form-line">
+                                        <input class="form-control" id="contact-desc"
+                                               name="contact-desc"
+                                               placeholder="写一段话介绍负责人">
+                                    </div>
+                                    <label id="contact-desc-error" class="error" for="contact-desc"></label>
+                                </div>
+                                <!--<select class="form-control show-tick" title="审核">-->
+                                <!--<option>审核通过</option>-->
+                                <!--<option>审核拒绝</option>-->
+                                <!--</select>-->
+                            </div>
+                        </div>
+
+                        <div class="panel-footer">
+                            <div class="btn-group" role="group">
+                                <button type="submit"
+                                        class="btn bg-teal waves-effect material-icons material-icons"
+                                        style="padding: 10px">
+                                    check
+                                    <span>修改基本信息</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <form id="service-advance__form" method="post" enctype="multipart/form-data">
+                        <div class="body">
+
+                            <div class="lead">
+                                <b>请完善以下信息(可选)</b>
+                            </div>
+
+                            <input type="checkbox" id="contact2" name="contact2" class="filled-in" checked/>
+                            <label for="contact2">添加另一个负责人</label>
+
+                            <div id="contact2_panel" class="input-group">
+                                <b>负责人姓名</b>
+                                <div class="form-line">
+                                    <input type="text"
+                                           id="contact2-name"
+                                           name="contact2-name"
+                                           class="form-control"
+                                           placeholder="负责人姓名">
+                                </div>
+                                <label id="contact2-name-error" class="error" for="contact-name"></label>
+
+                                <b>负责人介绍</b>
+                                <div class="help-info">不超过200字</div>
+                                <div class="input-group">
+                                    <div class="form-line">
+                                        <input class="form-control" id="contact2-desc"
+                                               name="contact2-desc"
+                                               placeholder="写一段话介绍负责人">
+                                    </div>
+                                    <label id="contact2-desc-error" class="error" for="contact-desc"></label>
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <input type="hidden" name="id" id="id" required="">
+
+                                <b>公司Logo</b>
+                                <a href="javascript:void(0);" class="thumbnail">
+                                    <img src="" class="img-responsive" id="logo-img-prev" width="120" height="120">
+                                </a>
+                                <div class="help-info">*.jpg/*.jpeg/*.png, Max: 5MB</div>
+                                <div class="form-line">
+                                    <input name="logo" type="file" id="logo" class="form-control"/>
+                                </div>
+                                <label id="logo-error" class="error" for="logo">不上传则不修改</label>
+                            </div>
+
+                            <div class="input-group">
+                                <b>服务城市(点击选择)</b>
+                                <div class="form-line">
+                                    <input
+                                            type="text"
+                                            id="service-city"
+                                            name="service-city"
+                                            class="form-control"
+                                            placeholder="服务城市(选择)">
+                                </div>
+                                <label id="service-city-error" class="error" for="service-city"></label>
+                            </div>
+
+                            <div class="input-group">
+                                <b>服务类型(点击选择)</b>
+                                <div class="form-line">
+                                    <input
+                                            type="text"
+                                            id="service-type"
+                                            name="service-type"
+                                            class="form-control"
+                                            placeholder="服务类型(选择/添加)">
+                                </div>
+                                <label id="service-type-error" class="error" for="service-type"></label>
+                            </div>
+                            <div class="input-group">
+                                <b>产业类型(点击选择)</b>
+                                <div class="form-line">
+                                    <input
+                                            type="text"
+                                            id="industry"
+                                            name="industry"
+                                            class="form-control"
+                                            placeholder="产业类型(选择/添加)">
+                                </div>
+                                <label id="industry-error" class="error" for="industry"></label>
+                            </div>
+
+                            <b>服务价格(负数表示: 面谈)</b>
+                            <div class="input-group">
+                                <span class="input-group-addon">￥</span>
+                                <div class="form-line">
+                                    <input
+                                            type="number"
+                                            min="-1"
+                                            id="service-price"
+                                            name="service-price"
+                                            class="form-control date"
+                                            placeholder="服务价格">
+                                </div>
+                                <span class="input-group-addon">.00</span>
+                            </div>
+
+                            <b>公司宣传画</b>
+                            <a href="javascript:void(0);" class="thumbnail">
+                                <img src="" class="img-responsive" id="banner-img-prev" width="120" height="120">
+                            </a>
+                            <div class="input-group">
+                                <div class="help-info">*.jpg/*.jpeg/*.png, Max: 5MB</div>
+                                <div class="form-line">
+                                    <input type="file" id="banner-image" name="banner-image" class="form-control"/>
+                                </div>
+                                <label id="banner-image-error" class="error" for="banner-image">不上传则不修改</label>
+                            </div>
+
+                            <b>公司宣传口号</b>
+                            <div class="input-group">
+                                <div class="form-line">
+                                    <input
+                                            type="text"
+                                            id="banner-text"
+                                            name="banner-text"
+                                            class="form-control"
+                                            placeholder="公司宣传口号">
+                                </div>
+                            </div>
+
+                            <b>服务详情图片</b>
+                            <a href="javascript:void(0);" class="thumbnail">
+                                <img src="" class="img-responsive" id="detail-img-prev" width="120" height="120">
+                            </a>
+                            <div class="input-group">
+                                <div class="help-info">*.jpg/*.jpeg/*.png, Max: 5MB</div>
+                                <div class="form-line">
+                                    <input type="file" id="service-detail-image" name="service-detail-image"
+                                           class="form-control"/>
+                                </div>
+                                <label id="service-detail-image-error" class="error"
+                                       for="service-detail-image">不上传则不修改</label>
+                            </div>
+
+                            <b>备注信息</b>
+                            <div class="input-group">
+                                <div class="form-line">
+                                        <textarea rows="4" class="form-control no-resize" id="additional"
+                                                  name="additional"
+                                                  placeholder="备注信息"></textarea>
+                                </div>
+                                <label id="additional-error" class="error" for="additional"></label>
+                            </div>
+                        </div>
+
+                        <div class="panel-footer">
+                            <div class="btn-group" role="group">
+                                <button type="submit"
+                                        class="btn bg-teal waves-effect material-icons material-icons"
+                                        style="padding: 10px">
+                                    check
+                                    <span>提交修改</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Widgets -->
+    </div>
+</section>
+
+<!-- Jquery Core Js -->
+<script src="../plugins/jquery/jquery.min.js"></script>
+
+<!-- Jquery Validation Plugin Css -->
+<script src="../plugins/jquery-validation/jquery.validate.js"></script>
+
+<!-- Slimscroll Plugin Js -->
+<script src="../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+<!-- Dropzone Plugin Js -->
+<script src="../plugins/dropzone/dropzone.js"></script>
+
+<!-- Bootstrap Core Js -->
+<script src="../plugins/bootstrap/js/bootstrap.js"></script>
+
+<!-- Bootstrap Notify Plugin Js -->
+<script src="../plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+<!-- Select Plugin Js -->
+<script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+<!-- SweetAlert Plugin Js -->
+<script src="../plugins/sweetalert/sweetalert.min.js"></script>
+
+<!-- Waves Effect Plugin Js -->
+<script src="../plugins/node-waves/waves.min.js"></script>
+
+<!-- noUISlider Plugin Js -->
+<script src="../plugins/nouislider/nouislider.js"></script>
+
+<!-- Custom Js -->
+<script src="../js/main.js"></script>
+<script src="../js/pages/service.complete.js"></script>
+
+</body>
+
+</html>
