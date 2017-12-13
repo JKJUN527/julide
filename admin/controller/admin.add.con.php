@@ -31,7 +31,7 @@ $con = mysqli_connect(DB_HOST, DB_USER, DB_PWD, DB_NAME);
 $con->query("SET NAMES UTF8;");
 
 //确定数据格式正确后，再查找数据库，看有没有重名
-$sqlRepeat = "SELECT `id` FROM `tb_admin` WHERE `username` = ? LIMIT 1";
+$sqlRepeat = "SELECT `id` FROM `jld_admin` WHERE `username` = ? LIMIT 1";
 $stmt = $con->prepare($sqlRepeat);
 $stmt->bind_param("s", $data['username']);
 $stmt->execute();
@@ -55,7 +55,7 @@ $data['password'] = md5($data['password'] . Constant::$_SALT);
 $token = generateToken($data['username'], $data['password'], Constant::$_SALT);
 
 //增加一个管理员
-$sqlAdd = "INSERT INTO `tb_admin` (
+$sqlAdd = "INSERT INTO `jld_admin` (
                     `token`,
                     `username`,
                     `password`

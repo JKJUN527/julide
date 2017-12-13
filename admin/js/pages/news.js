@@ -35,13 +35,14 @@ function getNewsList() {
                 for (var item in result.info) {
                     html += "<tr>" +
                         "<td>" + item + "</td>" +
+                        "<td style='max-width: 200px;'>" + result.info[item + ""]['type'] + "</td>" +
                         "<td style='max-width: 200px;'>" + result.info[item + ""]['title'] + "</td>" +
                         "<td style='max-width: 200px;'>" + result.info[item + ""]['content'].substring(0, 50) + "</td>" +
                         "<td>" + result.info[item + ""]['pushTime'] + "</td>" +
                         "<td>" +
                         "<div class='btn-group' role='group'>" +
-                        "<button type='button' class='btn btn-default btn-xs waves-effect material-icons'" +
-                        "onclick='detailNews(" + item + ")' data-toggle='modal' data-target='#detailNewsModal'>details</button>" +
+                        // "<button type='button' class='btn btn-default btn-xs waves-effect material-icons'" +
+                        // "onclick='detailNews(" + item + ")' data-toggle='modal' data-target='#detailNewsModal'>details</button>" +
                         "<button type='button' class='btn btn-default btn-xs waves-effect material-icons'" +
                         "onclick='deleteNews(" + item + ")'>delete</button>" +
                         "</div>" +
@@ -65,29 +66,28 @@ $("#add_news_form").submit(function (event) {
 
     var title = $("#title");
     var content = $("#content");
-    var url = $("#url");
-    var image = $("#image");
+    var type = $("select[name='type']");
 
     var form_data = new FormData();
 
-    var image__file = image.prop("files")[0];
-
-    if (image__file == undefined) {
-        form_data.append('image-flag', 0);
-    } else if (image__file.size > 5242880) {
-        $("#image-error").html("图片不能大于5MB");
-
-        $inputs.prop("disabled", false);
-        image.parents('.form-line').addClass('error');
-        return false;
-    } else {
-        form_data.append('image-flag', 1);
-        form_data.append('image', image__file);
-    }
+    // var image__file = image.prop("files")[0];
+    //
+    // if (image__file == undefined) {
+    //     form_data.append('image-flag', 0);
+    // } else if (image__file.size > 5242880) {
+    //     $("#image-error").html("图片不能大于5MB");
+    //
+    //     $inputs.prop("disabled", false);
+    //     image.parents('.form-line').addClass('error');
+    //     return false;
+    // } else {
+    //     form_data.append('image-flag', 1);
+    //     form_data.append('image', image__file);
+    // }
 
     form_data.append('title', title.val());
     form_data.append('content', content.val());
-    form_data.append('url', url.val());
+    form_data.append('type', type.val());
 
     swal({
         title: "确认添加资讯",

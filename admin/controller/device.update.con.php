@@ -6,16 +6,13 @@ require 'connection.db.php';
 require 'Constant.php';
 
 $id = $_POST['id'];
-$title = $_POST['pname'];
+$title = $_POST['dname'];
 $content = $_POST['content'];
-$model = $_POST['model'];
 $type = $_POST['type'];
-$material = $_POST['material'];
-$temperature = $_POST['temperature'];
 $image_flag = $_POST["image-flag"];
 
 //指定上传图片的路径
-$upload_folder = substr(dirname(__FILE__), 0, -16) . 'images/products/';
+$upload_folder = substr(dirname(__FILE__), 0, -16) . 'images/devices/';
 
 //如果指定的路径不存在则创建
 if (!file_exists($upload_folder)) {
@@ -37,16 +34,13 @@ if ($image_flag == 1 && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
 $con = mysqli_connect(DB_HOST, DB_USER, DB_PWD, DB_NAME);
 $con->query("SET NAMES UTF8;");
 
-    $sql = "UPDATE `jld_products` SET `type` = ?, `title` = ?, `image` = ?, `model` = ?,`material` = ? ,`temperature` = ? ,`description` = ? WHERE `id` = ?";
+    $sql = "UPDATE `jld_devices` SET `type` = ?, `title` = ?, `image` = ?,`description` = ? WHERE `id` = ?";
     //绑定变量
     $stmt = $con->prepare($sql);
-    $stmt->bind_param('issssssi',
+    $stmt->bind_param('isssi',
         $type,
         $title,
         $fileUpload,
-        $model,
-        $material,
-        $temperature,
         $content,
         $id
     );

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>资讯 | Dashboard</title>
+    <title>合伙人 | Dashboard</title>
     <!-- Favicon-->
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
 
@@ -28,9 +28,6 @@
     <!-- Preloader Css -->
     <link href="../plugins/material-design-preloader/md-preloader.min.css" rel="stylesheet"/>
 
-    <!-- Bootstrap Select Css -->
-    <link href="../plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet"/>
-
     <!-- Morris Chart Css-->
     <link href="../plugins/morrisjs/morris.css" rel="stylesheet"/>
 
@@ -47,7 +44,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <a href="javascript:void(0);" class="bars"></a>
-            <a class="navbar-brand" href="dashboard.html">项目列表</a>
+            <a class="navbar-brand" href="dashboard.html">合伙人</a>
         </div>
     </div>
 </nav>
@@ -171,7 +168,7 @@
     <div class="container-fluid">
         <div class="block-header">
             <h2>
-                NEWS
+                STAFF
             </h2>
         </div>
         <!-- Striped Rows -->
@@ -180,7 +177,7 @@
                 <div class="card">
                     <div class="header">
                         <h2>
-                            资讯列表
+                            设备类别列表
                         </h2>
                         <ul class="header-dropdown m-r--5">
                             <li class="dropdown">
@@ -189,27 +186,24 @@
                                     <i class="material-icons">more_vert</i>
                                 </a>
                                 <ul class="dropdown-menu pull-right">
-                                    <li><a href="news.add.html">添加资讯</a>
+                                    <li><a href="javascript:void(0);" data-toggle="modal" data-target="#addStaffModal">添加设备类型</a>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
                     </div>
                     <div class="body table-responsive">
-                        <table class="table table-striped" id="cu-news-table">
+                        <table class="table table-striped" id="cu-staff-table">
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>类别</th>
-                                <th>标题</th>
-                                <th>内容</th>
-                                <th>发布时间</th>
-                                <th>操作</th>
+                                <th>类别名称</th>
+                                <th>类别描述</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <td colspan="6"></td>
+                                <td colspan="3"></td>
                             </tr>
                             </tbody>
                         </table>
@@ -223,61 +217,50 @@
 
 <!-- Modal Dialogs ====================================================================================================================== -->
 <!-- Default Size -->
-<div class="modal fade" id="detailNewsModal" tabindex="-1" role="dialog">
+
+<div class="modal fade" id="addStaffModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="defaultModalLabel">资讯详情/修改</h4>
+                <h4 class="modal-title" id="defaultModalLabel1">添加设备类别</h4>
             </div>
-            <form id="update_news_form" role="form" method="post" enctype="multipart/form-data">
+            <form role="form" method="post" id="add_staff_form" enctype="multipart/form-data">
                 <div class="modal-body">
-                    <input type="hidden" name="id" id="id">
-                    <b>标题</b>
+
+                    <label for="name">类别名称</label>
                     <div class="input-group">
                         <div class="form-line">
-                            <input type="text" id="title" name="title" class="form-control" placeholder="资讯标题"
-                                   required>
+                            <input type="text" id="name" name="name" class="form-control"
+                                   placeholder="设备类别名称" required>
                         </div>
-                        <label id="title-error" class="error" for="title"></label>
+                        <label id="name-error" class="error" for="name"></label>
                     </div>
 
-                    <b>内容</b>
+                    <label for="desc">设备类别介绍</label>
                     <div class="input-group">
                         <div class="form-line">
-                                    <textarea rows="6" class="form-control no-resize" id="content" name="content"
-                                              placeholder="内容" required></textarea>
+                            <textarea rows="3" id="desc" name="desc" class="form-control no-resize"
+                                      placeholder="设备类别介绍"></textarea>
                         </div>
-                        <label id="content-error" class="error" for="content"></label>
+                        <label id="desc-error" class="error" for="desc"></label>
                     </div>
 
-                    <b>资讯图片</b>
-                    <a href="javascript:void(0);" class="thumbnail">
-                        <img src="" class="img-responsive" id="head-img" width="120" height="120">
-                    </a>
-                    <div class="input-group">
-                        <div class="form-line">
-                            <input type="file" id="image" name="image" class="form-control"/>
-                        </div>
-                        <label id="image-error" class="error" for="image">不修改则不上传</label>
-                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary waves-effect">修改</button>
-                    <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-primary waves-effect">添加</button>
+                    <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">取消</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
+
 <!-- Jquery Core Js -->
 <script src="../plugins/jquery/jquery.min.js"></script>
 
 <!-- Bootstrap Core Js -->
 <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
-
-<!-- Select Plugin Js -->
-<script src="../plugins/bootstrap-select/js/bootstrap-select.min.js"></script>
 
 <!-- Bootstrap Notify Plugin Js -->
 <script src="../plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
@@ -291,7 +274,7 @@
 <!-- Custom Js -->
 <script src="../js/main.js"></script>
 <script src="../js/pages/sign-form-validation.js"></script>
-<script src="../js/pages/news.js"></script>
+<script src="../js/pages/dtype.js"></script>
 
 </body>
 

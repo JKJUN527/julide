@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>资讯 | Dashboard</title>
+    <title>聚力德设备 | Dashboard</title>
     <!-- Favicon-->
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
 
@@ -47,7 +47,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <a href="javascript:void(0);" class="bars"></a>
-            <a class="navbar-brand" href="dashboard.html">项目列表</a>
+            <a class="navbar-brand" href="dashboard.html">产品列表</a>
         </div>
     </div>
 </nav>
@@ -171,7 +171,7 @@
     <div class="container-fluid">
         <div class="block-header">
             <h2>
-                NEWS
+                设备列表
             </h2>
         </div>
         <!-- Striped Rows -->
@@ -180,7 +180,7 @@
                 <div class="card">
                     <div class="header">
                         <h2>
-                            资讯列表
+                            已发布设备
                         </h2>
                         <ul class="header-dropdown m-r--5">
                             <li class="dropdown">
@@ -189,20 +189,20 @@
                                     <i class="material-icons">more_vert</i>
                                 </a>
                                 <ul class="dropdown-menu pull-right">
-                                    <li><a href="news.add.html">添加资讯</a>
+                                    <li><a href="data.add.html">添加新设备</a>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
                     </div>
                     <div class="body table-responsive">
-                        <table class="table table-striped" id="cu-news-table">
+                        <table class="table table-striped" id="cu-data-table">
                             <thead>
                             <tr>
                                 <th>#</th>
                                 <th>类别</th>
-                                <th>标题</th>
-                                <th>内容</th>
+                                <th>名称</th>
+                                <th>描述详情</th>
                                 <th>发布时间</th>
                                 <th>操作</th>
                             </tr>
@@ -227,32 +227,39 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="defaultModalLabel">资讯详情/修改</h4>
+                <h4 class="modal-title" id="defaultModalLabel">设备详情/修改</h4>
             </div>
-            <form id="update_news_form" role="form" method="post" enctype="multipart/form-data">
+            <form id="update_data_form" role="form" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <input type="hidden" name="id" id="id">
-                    <b>标题</b>
+                    <b>设备名称</b>
                     <div class="input-group">
                         <div class="form-line">
-                            <input type="text" id="title" name="title" class="form-control" placeholder="资讯标题"
+                            <input type="text" id="dname" name="dname" class="form-control" placeholder="产品名称"
                                    required>
                         </div>
-                        <label id="title-error" class="error" for="title"></label>
+                        <label id="title-error" class="error" for="dname"></label>
                     </div>
-
-                    <b>内容</b>
+                    <b>设备类型</b>
                     <div class="input-group">
                         <div class="form-line">
-                                    <textarea rows="6" class="form-control no-resize" id="content" name="content"
-                                              placeholder="内容" required></textarea>
+                            <select class="form-control" id="type" name="type">
+                            </select>
+                        </div>
+                        <label id="type-error" class="error" for="type"></label>
+                    </div>
+                    <b>描述详情</b>
+                    <div class="input-group">
+                        <div class="form-line">
+                            <textarea rows="6" class="form-control no-resize" id="content" name="content"
+                                              placeholder="描述详情" required></textarea>
                         </div>
                         <label id="content-error" class="error" for="content"></label>
                     </div>
 
-                    <b>资讯图片</b>
+                    <b>设备图片</b>
                     <a href="javascript:void(0);" class="thumbnail">
-                        <img src="" class="img-responsive" id="head-img" width="120" height="120">
+                        <img src="" class="img-responsive" id="img" width="120" height="120">
                     </a>
                     <div class="input-group">
                         <div class="form-line">
@@ -291,7 +298,7 @@
 <!-- Custom Js -->
 <script src="../js/main.js"></script>
 <script src="../js/pages/sign-form-validation.js"></script>
-<script src="../js/pages/news.js"></script>
+<script src="../js/pages/device.js"></script>
 
 </body>
 

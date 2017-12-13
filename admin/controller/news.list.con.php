@@ -14,20 +14,26 @@ $con = mysqli_connect(DB_HOST, DB_USER, DB_PWD, DB_NAME);
 $con->query("SET NAMES UTF8;");
 
 //获取指定项目的信息
-$sql = "SELECT `id`, `title`, `content`, `url`, `publish_time` FROM `tb_news` ORDER BY `publish_time` DESC";
+$sql = "SELECT `id`,`type`,`title`, `content`, `created_at` FROM `jld_news` ORDER BY `created_at` DESC";
 $stmt = $con->prepare($sql);
 $stmt->execute();
 
 $stmt->store_result();
-$stmt->bind_result($id, $title, $content, $url, $pushTime);
+$stmt->bind_result($id, $type ,$title, $content, $pushTime);
 $result['info'] = array();
 while ($stmt->fetch()) {
 
     $item = array();
     $item['id'] = $id;
+    if($type == 0){
+        $item['type'] = "公司新闻";
+    }elseif ($type == 1){
+        $item['type'] = "行业新闻";
+    }else{
+        $item['type'] = "产品咨询";
+    }
     $item['title'] = $title;
     $item['content'] = $content;
-    $item['url'] = $url;
     $item['pushTime'] = $pushTime;
     $result['info'][$id] = $item;
 }

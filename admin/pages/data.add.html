@@ -60,16 +60,22 @@
             <!-- Menu -->
             <div class="menu">
                 <ul class="list">
-                    <li>
+                    <li class="active">
                         <a href="admin.html">
                             <i class="material-icons">verified_user</i>
                             <span>管理员</span>
                         </a>
                     </li>
                     <li>
-                        <a href="staff.html">
-                            <i class="material-icons">people</i>
-                            <span>合伙人</span>
+                        <a href="ptype.html">
+                            <i class="material-icons">assignment</i>
+                            <span>产品类别</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="dtype.html">
+                            <i class="material-icons">assignment</i>
+                            <span>设备类别</span>
                         </a>
                     </li>
 
@@ -83,48 +89,62 @@
                             <li>
                                 <a href="news.html">资讯列表</a>
                             </li>
-                            <li >
+                            <li>
                                 <a href="news.add.html">添加资讯</a>
                             </li>
                         </ul>
                     </li>
-					<li class="active">
+                    <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">art_track</i>
-                            <span>智享数据</span>
+                            <span>产品管理</span>
                         </a>
 
                         <ul class="ml-menu">
                             <li>
-                                <a href="data.html">数据列表</a>
+                                <a href="data.html">产品列表</a>
                             </li>
-                            <li class="active">
-                                <a href="data.add.html">添加数据</a>
+                            <li>
+                                <a href="data.add.html">添加产品</a>
                             </li>
                         </ul>
                     </li>
-                    <li>
-                    <li>
-                        <a href="request.html">
-                            <i class="material-icons">assignment</i>
-                            <span>需求</span>
-                        </a>
-                    </li>
-
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">business_center</i>
-                            <span>企业服务</span>
+                            <i class="material-icons">art_track</i>
+                            <span>设备管理</span>
                         </a>
+
                         <ul class="ml-menu">
                             <li>
-                                <a href="service.check.html">审核</a>
+                                <a href="device.html">设备列表</a>
                             </li>
                             <li>
-                                <a href="service.publish.html">发布/完善</a>
+                                <a href="device.add.html">添加设备</a>
                             </li>
                         </ul>
                     </li>
+                    <!--<li>-->
+                    <!--<a href="request.html">-->
+                    <!--<i class="material-icons">assignment</i>-->
+                    <!--<span>需求</span>-->
+                    <!--</a>-->
+                    <!--</li>-->
+
+                    <!--<li>-->
+                    <!--<a href="javascript:void(0);" class="menu-toggle">-->
+                    <!--<i class="material-icons">business_center</i>-->
+                    <!--<span>企业服务</span>-->
+                    <!--</a>-->
+                    <!--<ul class="ml-menu">-->
+                    <!--<li>-->
+                    <!--<a href="service.check.html">审核</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<a href="service.publish.html">发布/完善</a>-->
+                    <!--</li>-->
+                    <!--</ul>-->
+                    <!--</li>-->
 
                     <li class="header"></li>
 
@@ -160,7 +180,7 @@
                 <div class="card">
                     <div class="header">
                         <h2>
-                            添加数据
+                            添加新产品
                         </h2>
                         <ul class="header-dropdown m-r--5">
                             <li class="dropdown">
@@ -169,7 +189,7 @@
                                     <i class="material-icons">more_vert</i>
                                 </a>
                                 <ul class="dropdown-menu pull-right">
-                                    <li><a href="news.html">返回数据列表</a>
+                                    <li><a href="data.html">返回产品列表</a>
                                     </li>
                                 </ul>
                             </li>
@@ -179,52 +199,68 @@
                     <div class="body">
                         <form role="form" method="post" id="add_data_form">
 
-                            <b>标题</b>
-                            <div class="input-group">
-                                <div class="form-line">
-                                    <input type="text" id="title" name="title" class="form-control" pattern="^[\u4e00-\u9fa5]{1,16}$|^[\dA-Za-z_]{1,32}$" placeholder="资讯标题-不能超过16个字"
-                                           required>
+                            <div class="modal-body">
+                                <input type="hidden" name="id" id="id">
+                                <b>名称</b>
+                                <div class="input-group">
+                                    <div class="form-line">
+                                        <input type="text" id="pname" name="pname" class="form-control" placeholder="产品名称"
+                                               required>
+                                    </div>
+                                    <label id="title-error" class="error" for="pname"></label>
                                 </div>
-                                <label id="title-error" class="error" for="title"></label>
-                            </div>
-
-                            <b>数据内容</b>
-                            <div class="input-group">
-                                <div class="form-line">
-                                    <textarea rows="6" class="form-control no-resize" id="content" name="content" pattern="^[\u4e00-\u9fa5]{1,127}$|^[\dA-Za-z_]{1,255}$"
-                                              placeholder="内容" required></textarea>
+                                <b>产品类型</b>
+                                <div class="input-group">
+                                    <div class="form-line">
+                                        <select class="form-control" id="type" name="type">
+                                        </select>
+                                    </div>
+                                    <label id="type-error" class="error" for="type"></label>
                                 </div>
-                                <label id="content-error" class="error" for="content"></label>
-                            </div>
+                                <b>型号</b>
+                                <div class="input-group">
+                                    <div class="form-line">
+                                        <input type="text" id="model" name="model" class="form-control" placeholder="产品型号"
+                                               required>
+                                    </div>
+                                    <label id="model-error" class="error" for="model"></label>
+                                </div>
+                                <b>材料</b>
+                                <div class="input-group">
+                                    <div class="form-line">
+                                        <input type="text" id="material" name="material" class="form-control" placeholder="产品所用材料eg:PP"
+                                               required>
+                                    </div>
+                                    <label id="material-error" class="error" for="material"></label>
+                                </div>
+                                <b>成型温度</b>
+                                <div class="input-group">
+                                    <div class="form-line">
+                                        <input type="text" id="temperature" name="temperature" class="form-control" placeholder="产品成型温度"
+                                               required>
+                                    </div>
+                                    <label id="temperature-error" class="error" for="temperature"></label>
+                                </div>
+                                <b>描述详情</b>
+                                <div class="input-group">
+                                    <div class="form-line">
+                            <textarea rows="6" class="form-control no-resize" id="content" name="content"
+                                      placeholder="描述详情" required></textarea>
+                                    </div>
+                                    <label id="content-error" class="error" for="content"></label>
+                                </div>
 
-                           <b>是否加粗</b>
-							<div class="input-group">
-								<div class="form-line">
-									<input type="text" id="is_bord" name="is_bord" class="form-control" pattern="[0-1]{1}"placeholder="1-加粗"
-										   required>
-								</div>
-								<label id="bord-error" class="error" for="bord"></label>
-							</div>
-							
-							<b>是否标红</b>
-							<div class="input-group">
-								<div class="form-line">
-									<input type="text" id="is_red" name="is_red" class="form-control" pattern="[0-1]{1}" placeholder="1-标红"
-										   required>
-								</div>
-								<label id="red-error" class="error" for="color"></label>
-							</div>
-							
-							<b>是否上架</b>
-							<div class="input-group">
-								<div class="form-line">
-									<input type="text" id="is_pass" name="is_pass" class="form-control" pattern="[0-1]{1}" placeholder="1-上架"
-										   required>
-								</div>
-								<label id="pass-error" class="error" for="pass"></label>
-							</div>
-							
-                            <button type="submit" class="btn bg-primary waves-effect">添加数据</button>
+                                <b>产品图片</b>
+                                <div class="input-group">
+                                    <div class="form-line">
+                                        <input type="file" id="image" name="image" class="form-control"/>
+                                    </div>
+                                    <label id="image-error" class="error" for="image">不修改则不上传</label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary waves-effect">添加</button>
+                            </div>
                         </form>
                     </div><!-- #END# .body-->
                 </div>
@@ -256,6 +292,28 @@
 <script src="../js/main.js"></script>
 <script src="../js/pages/sign-form-validation.js"></script>
 <script src="../js/pages/data.js"></script>
+<script>
+    $(document).ready(function () {
+        getType();
+    });
+
+    function getType() {
+        $.ajax({
+            url: "/admin/controller/data.gettype.con.php",
+            data: {funName: "gettype"},
+            type: "get",
+            success: function (data) {
+                var result = JSON.parse(data);
+                //设置type
+                var html = "";
+                for (var item in result.type) {
+                    html += "<option value='"+item+"'>"+result.type[item]['name']+"</option>";
+                }
+                $("#type").append(html);
+            }
+        })
+    }
+</script>
 
 </body>
 

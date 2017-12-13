@@ -47,7 +47,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <a href="javascript:void(0);" class="bars"></a>
-            <a class="navbar-brand" href="dashboard.html">项目添加</a>
+            <a class="navbar-brand" href="admin.html">咨询添加</a>
         </div>
     </div>
 </nav>
@@ -60,20 +60,26 @@
             <!-- Menu -->
             <div class="menu">
                 <ul class="list">
-                    <li>
+                    <li class="active">
                         <a href="admin.html">
                             <i class="material-icons">verified_user</i>
                             <span>管理员</span>
                         </a>
                     </li>
                     <li>
-                        <a href="staff.html">
-                            <i class="material-icons">people</i>
-                            <span>合伙人</span>
+                        <a href="ptype.html">
+                            <i class="material-icons">assignment</i>
+                            <span>产品类别</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="dtype.html">
+                            <i class="material-icons">assignment</i>
+                            <span>设备类别</span>
                         </a>
                     </li>
 
-                    <li class="active">
+                    <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">art_track</i>
                             <span>资讯</span>
@@ -83,48 +89,62 @@
                             <li>
                                 <a href="news.html">资讯列表</a>
                             </li>
-                            <li class="active">
+                            <li>
                                 <a href="news.add.html">添加资讯</a>
                             </li>
                         </ul>
                     </li>
-					<li>
+                    <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">art_track</i>
-                            <span>智享数据</span>
+                            <span>产品管理</span>
                         </a>
 
                         <ul class="ml-menu">
                             <li>
-                                <a href="data.html">数据列表</a>
+                                <a href="data.html">产品列表</a>
                             </li>
                             <li>
-                                <a href="data.add.html">添加数据</a>
+                                <a href="data.add.html">添加产品</a>
                             </li>
                         </ul>
                     </li>
-                    <li>
-                    <li>
-                        <a href="request.html">
-                            <i class="material-icons">assignment</i>
-                            <span>需求</span>
-                        </a>
-                    </li>
-
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">business_center</i>
-                            <span>企业服务</span>
+                            <i class="material-icons">art_track</i>
+                            <span>设备管理</span>
                         </a>
+
                         <ul class="ml-menu">
                             <li>
-                                <a href="service.check.html">审核</a>
+                                <a href="device.html">设备列表</a>
                             </li>
                             <li>
-                                <a href="service.publish.html">发布/完善</a>
+                                <a href="device.add.html">添加设备</a>
                             </li>
                         </ul>
                     </li>
+                    <!--<li>-->
+                    <!--<a href="request.html">-->
+                    <!--<i class="material-icons">assignment</i>-->
+                    <!--<span>需求</span>-->
+                    <!--</a>-->
+                    <!--</li>-->
+
+                    <!--<li>-->
+                    <!--<a href="javascript:void(0);" class="menu-toggle">-->
+                    <!--<i class="material-icons">business_center</i>-->
+                    <!--<span>企业服务</span>-->
+                    <!--</a>-->
+                    <!--<ul class="ml-menu">-->
+                    <!--<li>-->
+                    <!--<a href="service.check.html">审核</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<a href="service.publish.html">发布/完善</a>-->
+                    <!--</li>-->
+                    <!--</ul>-->
+                    <!--</li>-->
 
                     <li class="header"></li>
 
@@ -187,6 +207,17 @@
                                 </div>
                                 <label id="title-error" class="error" for="title"></label>
                             </div>
+                            <b>咨询类型</b>
+                            <div class="input-group">
+                                <div class="form-line">
+                                    <select class="form-control" id="type" name="type">
+                                        <option value="0">公司新闻</option>
+                                        <option value="1">行业新闻</option>
+                                        <option value="2">产品咨询</option>
+                                    </select>
+                                </div>
+                                <label id="type-error" class="error" for="type"></label>
+                            </div>
 
                             <b>内容</b>
                             <div class="input-group">
@@ -197,22 +228,22 @@
                                 <label id="content-error" class="error" for="content"></label>
                             </div>
 
-                            <b>链接</b>
-                            <div class="input-group">
-                                <div class="form-line">
-                                    <input type="text" id="url" name="url" class="form-control" placeholder="链接"
-                                           required>
-                                </div>
-                                <label id="url-error" class="error" for="url"></label>
-                            </div>
+                            <!--<b>链接</b>-->
+                            <!--<div class="input-group">-->
+                                <!--<div class="form-line">-->
+                                    <!--<input type="text" id="url" name="url" class="form-control" placeholder="链接"-->
+                                           <!--required>-->
+                                <!--</div>-->
+                                <!--<label id="url-error" class="error" for="url"></label>-->
+                            <!--</div>-->
 
-                            <b>资讯图片</b>
-                            <div class="input-group">
-                                <div class="form-line">
-                                    <input type="file" id="image" name="image" class="form-control"/>
-                                </div>
-                                <label id="image-error" class="error" for="image"></label>
-                            </div>
+                            <!--<b>资讯图片</b>-->
+                            <!--<div class="input-group">-->
+                                <!--<div class="form-line">-->
+                                    <!--<input type="file" id="image" name="image" class="form-control"/>-->
+                                <!--</div>-->
+                                <!--<label id="image-error" class="error" for="image"></label>-->
+                            <!--</div>-->
                             <button type="submit" class="btn bg-primary waves-effect">添加资讯</button>
                         </form>
                     </div><!-- #END# .body-->

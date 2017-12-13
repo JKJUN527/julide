@@ -25,27 +25,25 @@ function getStaffList(){
         success: function(data){
             var result = JSON.parse(data);
 
-            var staffNum = result.staffNum;
+            var ptypeNum = result.ptypeNum;
 
             //设置分页
             // ----
 
             //显示合伙人表格的内容
-            if (staffNum == 0) {
-                $("#cu-staff-table").find("tbody>tr>td").html("暂时没有合伙人");
+            if (ptypeNum == 0) {
+                $("#cu-staff-table").find("tbody>tr>td").html("暂时没有产品类别");
             } else {
                 var html = "";
-                for (var item in result.staff) {
-                    if (result.staff[item + ""]['top'] == 1) {
+                for (var item in result.ptype) {
+                    if (result.ptype[item + ""]['top'] == 1) {
                         html += "<tr class='success'>";
                     } else {
                         html += "<tr>";
                     }
                     html += "<td>" + item + "</td>" +
-                        "<td>" + result.staff[item + ""]['name'] + "</td>" +
-                        "<td>" + result.staff[item + ""]['duties'] + "</td>" +
-                        "<td>" + result.staff[item + ""]['email'] + "</td>" +
-                        "<td>" + result.staff[item + ""]['phone'] + "</td>" +
+                        "<td>" + result.ptype[item + ""]['name'] + "</td>" +
+                        "<td>" + result.ptype[item + ""]['desc'] + "</td>" +
                         "<td>" +
                         "<div class='btn-group' role='group'>" +
                         "<button type='button' class='btn btn-default btn-xs waves-effect material-icons'" +
@@ -69,8 +67,8 @@ function getStaffList(){
 
 function deleteStaff(id) {
     swal({
-        title: "删除合伙人",
-        text: "删除后，该合伙人的所有信息将清空。此操作不能撤销!",
+        title: "删除该type",
+        text: "删除后，该type将不存在。此操作不能撤销!",
         type: "info",
         confirmButtonText: "确定删除",
         cancelButtonText: "取消",

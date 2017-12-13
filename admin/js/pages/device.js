@@ -22,7 +22,7 @@ $.ajax({
 
 function getDataList() {
     $.ajax({
-        url: "/admin/controller/data.list.con.php",
+        url: "/admin/controller/device.list.con.php",
         success: function (data) {
             var result = JSON.parse(data);
             var projectNum = result.number;
@@ -30,28 +30,25 @@ function getDataList() {
             //显示项目表格的内容
 			//alert("12345");
             if (projectNum == 0) {
-                $("#cu-data-table").find("tbody>tr>td").html("暂时没有产品，请添加");
+                $("#cu-data-table").find("tbody>tr>td").html("暂时没有设备，请添加");
             } else {
                 var html = "";
-				 //console.log(result.info);
-                for (var item in result.products) {
-					// alert(result.products[item]);
-                    var type = result.type[result.products[item]['type']]['name'];
+				 console.log(result.type['1']['name']);
+                for (var item in result.devices) {
+					// type = result.devices[item]['type']
+                    var type = result.type[result.devices[item]['type']]['name'];
                     html += "<tr>" +
                         "<td>" + item + "</td>" +
                         "<td style='max-width: 200px;'>" + type + "</td>" +
-                        "<td style='max-width: 200px;'>" + result.products[item + ""]['title'] + "</td>" +
-                        "<td style='max-width: 200px;'>" + result.products[item + ""]['model'] + "</td>" +
-                        "<td style='max-width: 200px;'>" + result.products[item + ""]['material'] + "</td>" +
-                        "<td style='max-width: 200px;'>" + result.products[item + ""]['temperature'] + "</td>" +
-                        "<td style='max-width: 200px;'>" + result.products[item + ""]['description'].substring(0, 50) + "</td>" +
-                        "<td>" + result.products[item + ""]['created_at'] + "</td>" +
+                        "<td style='max-width: 200px;'>" + result.devices[item + ""]['title'] + "</td>" +
+                        "<td style='max-width: 200px;'>" + result.devices[item + ""]['description'].substring(0, 50) + "</td>" +
+                        "<td>" + result.devices[item + ""]['created_at'] + "</td>" +
                         "<td>" +
                         "<div class='btn-group' role='group'>" +
                         "<button type='button' class='btn btn-default btn-xs waves-effect material-icons'" +
-                        "onclick='detailData(" + result.products[item + ""]['id'] + ")' data-toggle='modal' data-target='#detailNewsModal'>details</button>" +
+                        "onclick='detailData(" + result.devices[item + ""]['id'] + ")' data-toggle='modal' data-target='#detailNewsModal'>details</button>" +
                         "<button type='button' class='btn btn-default btn-xs waves-effect material-icons'" +
-                        "onclick='deleteData(" + result.products[item + ""]['id'] + ")'>delete</button>" +
+                        "onclick='deleteData(" + result.devices[item + ""]['id'] + ")'>delete</button>" +
                         "</div>" +
                         "</td>" +
                         "</tr>";
@@ -72,10 +69,7 @@ $("#add_data_form").submit(function (event) {
    // $inputs.prop("disabled", true);
 
     var image = $("#image");
-    var pname = $("#pname");
-    var model = $("#model");
-    var material = $("#material");
-    var temperature = $("#temperature");
+    var dname = $("#dname");
     var content = $("#content");
     var type = $("select[name='type']");
 
@@ -94,15 +88,12 @@ $("#add_data_form").submit(function (event) {
         form_data.append('image-flag', 1);
         form_data.append('image', image__file);
     }
-    form_data.append('pname', pname.val());
+    form_data.append('dname', dname.val());
     form_data.append('content', content.val());
-    form_data.append('model', model.val());
     form_data.append('type', type.val());
-    form_data.append('material', material.val());
-    form_data.append('temperature', temperature.val());
 
     swal({
-        title: "确认添加产品",
+        title: "确认添加设备",
         type: "info",
         confirmButtonText: "确认添加",
         cancelButtonText: "取消",
@@ -112,7 +103,7 @@ $("#add_data_form").submit(function (event) {
     }, function () {
 
         $.ajax({
-            url: "/admin/controller/data.addItem.con.php",
+            url: "/admin/controller/device.addItem.con.php",
             type: "post",
             dataType: 'text',  // what to expect back from the PHP script, if anything
             cache: false,
@@ -125,13 +116,13 @@ $("#add_data_form").submit(function (event) {
                     swal({
                         title: "添加成功",
                         type: "info",
-                        confirmButtonText: "返回产品列表",
+                        confirmButtonText: "返回设备列表",
                         cancelButtonText: "关闭",
                         showCancelButton: true,
                         closeOnConfirm: false,
                         showLoaderOnConfirm: true
                     }, function () {
-                        location.href = "data.html";
+                        location.href = "device.html";
                     });
                 } else {
                     swal("添加失败");
@@ -156,10 +147,7 @@ $("#update_data_form").submit(function (event) {
     $inputs.prop("disabled", true);
 
     var image = $("#image");
-    var pname = $("#pname");
-    var model = $("#model");
-    var material = $("#material");
-    var temperature = $("#temperature");
+    var dname = $("#dname");
     var content = $("#content");
     var type = $("select[name='type']");
 
@@ -180,15 +168,12 @@ $("#update_data_form").submit(function (event) {
     }
 
     form_data.append('id', id.val());
-    form_data.append('pname', pname.val());
+    form_data.append('dname', dname.val());
     form_data.append('content', content.val());
-    form_data.append('model', model.val());
 	form_data.append('type', type.val());
-	form_data.append('material', material.val());
-	form_data.append('temperature', temperature.val());
 
     $.ajax({
-        url: "/admin/controller/data.update.con.php",
+        url: "/admin/controller/device.update.con.php",
         type: "post",
         dataType: 'text',
         cache: false,
@@ -200,10 +185,10 @@ $("#update_data_form").submit(function (event) {
             $("#detailNewsModal").modal('hide');
             var result = JSON.parse(data);
             if (result == 1) {
-                showNotification("alert-success", "智享数据已修改", "top", "right", "animated fadeInRight", "animated fadeOutRight");
+                showNotification("alert-success", "设备数据已修改", "top", "right", "animated fadeInRight", "animated fadeOutRight");
                 getDataList();
             } else {
-                showNotification("alert-danger", "智享数据修改失败", "top", "right", "animated fadeInRight", "animated fadeOutRight");
+                showNotification("alert-danger", "设备修改失败", "top", "right", "animated fadeInRight", "animated fadeOutRight");
             }
         }
     });
@@ -211,17 +196,14 @@ $("#update_data_form").submit(function (event) {
 
 function detailData(id) {
     $.ajax({
-        url: "/admin/controller/data.detail.con.php",
+        url: "/admin/controller/device.detail.con.php",
         data: {id: id},
         type: "post",
         success: function (data) {
             var result = JSON.parse(data);
-            var imgsrc ="../../images/products/"+result['detail']['image'];
+            var imgsrc ="../../images/devices/"+result['detail']['image'];
             $("#id").prop("value",result['detail']['id']);
-            $("#pname").prop("value",result['detail']['title']);
-            $("#model").prop("value",result['detail']['model']);
-            $("#material").prop("value",result['detail']['material']);
-            $("#temperature").prop("value",result['detail']['temperature']);
+            $("#dname").prop("value",result['detail']['title']);
             $("#content").prop("value",result['detail']['description']);
             $("#img").prop("src",imgsrc);
             var html = "";
@@ -253,7 +235,7 @@ function deleteData(id) {
         showLoaderOnConfirm: true
     }, function () {
         $.ajax({
-            url: "/admin/controller/data.delete.con.php",
+            url: "/admin/controller/device.delete.con.php",
             data: {id: id},
             type: "post",
 

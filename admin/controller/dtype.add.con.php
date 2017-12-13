@@ -42,7 +42,7 @@ $con->query("SET NAMES UTF8;");
 //    $stmt->bind_param("ssssss", $fileUpload, $username, $desc, $duties, $email, $phone);
 //}
 
-$sql = "INSERT INTO jld_product_type (`name`, `describe`) VALUE (?, ?)";
+$sql = "INSERT INTO jld_device_type (`name`, `describe`) VALUE (?, ?)";
 $stmt = $con->prepare($sql);
 $stmt->bind_param("ss",$username, $desc);
 

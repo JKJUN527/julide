@@ -11,7 +11,7 @@ $id = $_POST['id'];
 
 $con = mysqli_connect(DB_HOST, DB_USER, DB_PWD, DB_NAME);
 $con->query("SET NAMES UTF8;");
-$sql = "DELETE FROM `jld_news` WHERE `id` = ?";
+$sql = "DELETE FROM `jld_device_type` WHERE `id` = ?";
 
 $stmt = $con->prepare($sql);
 $stmt->bind_param('i', $id);

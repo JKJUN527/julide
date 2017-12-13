@@ -11,7 +11,7 @@ $id = $_POST['id'];
 
 $con = mysqli_connect(DB_HOST, DB_USER, DB_PWD, DB_NAME);
 $con->query("SET NAMES UTF8;");
-$sql = "DELETE FROM `tb_dailymes` WHERE `did` = ?";
+$sql = "DELETE FROM `jld_products` WHERE `id` = ?";
 
 $stmt = $con->prepare($sql);
 $stmt->bind_param('i', $id);

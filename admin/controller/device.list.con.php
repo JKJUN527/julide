@@ -14,13 +14,13 @@ $con = mysqli_connect(DB_HOST, DB_USER, DB_PWD, DB_NAME);
 $con->query("SET NAMES UTF8;");
 
 //获取指定项目的信息
-$sql = "SELECT `id`,`type`,`title`, `image` ,`model`, `material`, `temperature`,`description`, `created_at` FROM `jld_products` ORDER BY `id` DESC";
+$sql = "SELECT `id`,`type`,`title`, `image`,`description`, `created_at` FROM `jld_devices` ORDER BY `id` DESC";
 $stmt = $con->prepare($sql);
 $stmt->execute();
 
 $stmt->store_result();
-$stmt->bind_result($id,$type,$title, $image, $model,$material,$temperature,$description, $created_at);
-$result['products'] = array();
+$stmt->bind_result($id,$type,$title, $image,$description, $created_at);
+$result['devices'] = array();
 //int i=0;
 $i=0;
 while ($stmt->fetch()) {
@@ -30,19 +30,16 @@ while ($stmt->fetch()) {
     $item['type'] = $type;
     $item['title'] = $title;
     $item['image'] = $image;
-    $item['model'] = $model;
-    $item['material'] = $material;
-    $item['temperature'] = $temperature;
     $item['description'] = $description;
     $item['created_at'] = $created_at;
 
 	
-    $result['products'][$i++] = $item;
+    $result['devices'][$i++] = $item;
 }
 $result['number'] = $stmt->num_rows;
 
 //获取指定项目的信息
-$sql = "SELECT `id`,`name` FROM `jld_product_type` ORDER BY `id` DESC";
+$sql = "SELECT `id`,`name` FROM `jld_device_type` ORDER BY `id` DESC";
 $stmt = $con->prepare($sql);
 $stmt->execute();
 
@@ -57,7 +54,6 @@ while ($stmt->fetch()) {
 
     $result['type'][$id] = $item;
 }
-
 
 //关闭数据库连接
 $stmt->close();
