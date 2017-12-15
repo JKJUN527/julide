@@ -51,7 +51,7 @@ function getIndex(){
                   `image`
             FROM `jld_products` 
             ORDER BY `created_at` DESC 
-            LIMIT 0, 6";
+            LIMIT 0, 3";
 
     $stmt = $con->prepare($sql1);
     $stmt->execute();

@@ -16,24 +16,16 @@ function getIndex() {
             var result = JSON.parse(data);
             //设置产品中心图
             for (var item in result.products) {
-                var i = 0;
+                var i = 1;
                 var html = "";
-                var src = "/images/default.png";
+                var src = "/images/products/default.png";
                 if (result.products[item + ""]["image"] != null && result.products[item + ""]["image"] != "") {
                     src = "/images/products/" + result.products[item + ""]['image'];
                 }
-                // html = '<li class="clone" aria-hidden="true" style="width: 303.333px; margin-right: 0px; float: left; display: block;"><img src="images/index-content-left-01.png" draggable="false"></li>'+
-                //     '<li class="am-active-slide" style="width: 303.333px; margin-right: 0px; float: left; display: block;" class="am-active-slide" data-thumb-alt=""><img src="images/index-content-left-01.png" draggable="false"></li>'+
-                //     '<li style="width: 303.333px; margin-right: 0px; float: left; display: block;" class="am-active-slide" data-thumb-alt=""><img src="images/index-content-left-01.png" draggable="false"></li>'+
-                //     '<li style="width: 303.333px; margin-right: 0px; float: left; display: block;" class="am-active-slide" data-thumb-alt=""><img src="images/index-content-left-01.png" draggable="false"></li>'+
-                //     '<li style="width: 303.333px; margin-right: 0px; float: left; display: block;" class="am-active-slide" data-thumb-alt=""><img src="images/index-content-left-01.png" draggable="false"></li>'+
-                //     '<li class="clone" aria-hidden="true" style="width: 303.333px; margin-right: 0px; float: left; display: block;"><img src="images/index-content-left-01.png" draggable="false"></li>'
-
-                // html += '<li><img src="' +src+'" /></li>';
-                i++;
-                if (i ==1) {
-                    // $("#products-img").append(html);
-                    // html = "";
+                id = "products-index"+i;
+                $('#'+id).prop('src',src);
+                if(i++>=3){
+                    break;
                 }
             }
             //设置最新新闻
