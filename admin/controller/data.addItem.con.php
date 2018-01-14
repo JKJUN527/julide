@@ -10,7 +10,7 @@ $content = $_POST['content'];
 $model = $_POST['model'];
 $type = $_POST['type'];
 $material = $_POST['material'];
-$temperature = $_POST['temperature'];
+//$temperature = $_POST['temperature'];
 $image_flag = $_POST["image-flag"];
 
 //指定上传图片的路径
@@ -32,6 +32,7 @@ if ($image_flag == 1 && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
     $fileUpload = $name;
 }
 
+print $upload_folder;
 //连接数据库，并设置字符编码
 $con = mysqli_connect(DB_HOST, DB_USER, DB_PWD, DB_NAME);
 $con->query("SET NAMES UTF8;");
@@ -43,8 +44,7 @@ $sql = "INSERT INTO `jld_products` (
     `image`,
     `model`,
     `material`,
-    `temperature`,
-    `description`) VALUES (?, ?, ?, ?, ?, ? ,?)";
+    `description`) VALUES (?, ?, ?, ?, ? ,?)";
 
 //绑定变量
 $stmt = $con->prepare($sql);
@@ -54,7 +54,6 @@ $stmt->bind_param('issssss',
     $fileUpload,
     $model,
     $material,
-    $temperature,
     $content
 );
 

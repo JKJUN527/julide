@@ -43,7 +43,6 @@ function getDataList() {
                         "<td style='max-width: 200px;'>" + result.products[item + ""]['title'] + "</td>" +
                         "<td style='max-width: 200px;'>" + result.products[item + ""]['model'] + "</td>" +
                         "<td style='max-width: 200px;'>" + result.products[item + ""]['material'] + "</td>" +
-                        "<td style='max-width: 200px;'>" + result.products[item + ""]['temperature'] + "</td>" +
                         "<td style='max-width: 200px;'>" + result.products[item + ""]['description'].substring(0, 50) + "</td>" +
                         "<td>" + result.products[item + ""]['created_at'] + "</td>" +
                         "<td>" +

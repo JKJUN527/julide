@@ -10,7 +10,7 @@ if (cp === null || cp.toString().length < 1) {
     cp = 1;
 }
 if (type === null || type.toString().length < 1) {
-    type = 0;
+    type = 6;
 }
 
 $(document).ready(function () {

@@ -27,7 +27,6 @@ function getProductDetail() {
             $("#detail_name").html(result.detail['title']);
             $("#detail_model").html(result.detail['model']);
             $("#detail_material").html(result.detail['material']);
-            $("#detail_temperature").html(result.detail['temperature']);
             $("#detail_describe").html(result.detail['description']);
             var image = "";
             image = "<img src=\""+src+"\" >";
