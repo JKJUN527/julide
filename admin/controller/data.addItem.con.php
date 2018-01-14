@@ -32,7 +32,7 @@ if ($image_flag == 1 && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
     $fileUpload = $name;
 }
 
-print $upload_folder;
+//print $upload_folder;
 //连接数据库，并设置字符编码
 $con = mysqli_connect(DB_HOST, DB_USER, DB_PWD, DB_NAME);
 $con->query("SET NAMES UTF8;");
@@ -48,7 +48,7 @@ $sql = "INSERT INTO `jld_products` (
 
 //绑定变量
 $stmt = $con->prepare($sql);
-$stmt->bind_param('issssss',
+$stmt->bind_param('isssss',
     $type,
     $title,
     $fileUpload,
