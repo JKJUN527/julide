@@ -10,5 +10,6 @@ if (PHP_VERSION < '5.3.29') {
 
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
-define('DB_PWD', '');
+//define('DB_PWD', '');
+define('DB_PWD', 'jkjun@12345');
 define('DB_NAME', 'julide_db');

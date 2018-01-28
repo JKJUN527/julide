@@ -39,7 +39,7 @@ function getProductIndex(type) {
                         "<div class='product-list-item '>" +
                         "<div class='product-list-item-bj '>" +
                         "<a href=\"./product_info.html?id="+result.products[item+""]['id']+"\">" +
-                        "<image src='"+src+"' />" +
+                        "<image src='"+src+"'" + " style= 'width: 130px;height: 130px;'/>" +
                         "</a>" +
                         "</div>"+
                         "<div class='product-list-item-title'>"+

@@ -39,7 +39,7 @@ function getDeviceIndex(type) {
                     html += "<div class='am-u-sm-6 am-u-md-4 am-u-lg-3'>" +
                         "<div class='case-list-item '>" +
                         "<a>" +
-                        "<image src='"+src+"' />" +
+                        "<image src='"+src+"'" + " style= 'width: 130px;height: 130px;' />" +
                         "<span>"+result.devices[item+""]['title'] +
                         "</span>" +
                         "</a>" +

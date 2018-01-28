@@ -15,12 +15,13 @@ function getIndex() {
         success: function (data) {
             var result = JSON.parse(data);
             //设置产品中心图
+            var i = 1;
             for (var item in result.products) {
-                var i = 1;
                 var html = "";
+                console.log(result.products[item]["image"]);
                 var src = "/images/products/default.png";
                 if (result.products[item + ""]["image"] != null && result.products[item + ""]["image"] != "") {
-                    src = "/images/products/" + result.products[item + ""]['image'];
+                    src = "http://www.julidewj.com/images/products/" + result.products[item + ""]['image'];
                 }
                 id = "products-index"+i;
                 $('#'+id).prop('src',src);
@@ -29,8 +30,8 @@ function getIndex() {
                 }
             }
             //设置最新新闻
+            var i = 0;
             for (var item in result.news) {
-                var i = 0;
                 var html = "";
                 //<li><a href="#"><span>热看LED产业，组建光电技术公司激流扬帆 </span><em>2017-4-6</em></a></li>
                 title = result.news[item+'']['title'];
@@ -43,14 +44,14 @@ function getIndex() {
                 }
             }
             //设置首页设备图
-            var src = "/images/devices/default.png";
+            var i = 0;
             for (var item in result.devices) {
-                var i = 0;
                 var html = "";
-                if (result.devices[item + ""]["image"] != null) {
+                var src = "/images/devices/default.png";
+                if (result.devices[item + ""]["image"] != null || result.devices[item + ""]["image"] != "") {
                     src = "/images/devices/" + result.devices[item + ""]["image"];
                 }
-                html = "<img src='"+src+"' /><br>"
+                html = "<img src='"+src+"'" + " style= 'width: 300px;height: 300px;' /><br>";
                 $("#device-index").append(html);
             }
         }
